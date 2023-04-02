@@ -3,7 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("CryptoExtension" VERSION 1.0.0 DESCRIPTION "A cryptopp proxy for GMS2")
+project ("RSAExtension" VERSION 1.0.0 DESCRIPTION "A cryptopp RSA proxy for GMS2")
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -29,5 +29,5 @@ cpmaddpackage(
 # Include sub-projects.
 add_subdirectory ("CryptoExtension")
 
-target_link_libraries(CryptoExtension PUBLIC cryptopp::cryptopp)
-target_compile_features(CryptoExtension PRIVATE cxx_constexpr)
+target_link_libraries(RSAExtension PUBLIC cryptopp::cryptopp)
+target_compile_features(RSAExtension PRIVATE cxx_constexpr)
