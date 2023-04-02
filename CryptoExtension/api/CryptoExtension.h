@@ -6,8 +6,12 @@
 #ifdef _WIN32
 #define GMDLL extern "C" __declspec(dllexport)
 #else
-#define GMDLL
+#define GMDLL extern "C"
 #endif
+
+#include <rsa.h>
+#include <integer.h>
+#include <osrng.h>
 
 // TODO: Reference additional headers your program requires here.
 

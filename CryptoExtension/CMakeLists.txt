@@ -11,6 +11,8 @@ include(GNUInstallDirs)
 # Add source to this project's executable.
 # add_executable (CryptoExtension "CryptoExtension.cpp" "CryptoExtension.h")
 
+# target_link_libraries (CryptoExtension "${CMAKE_CURRENT_LIST_DIR}/../libs/cryptopp.lib")
+
 add_library (CryptoExtension SHARED "src/CryptoExtension.cpp" "api/CryptoExtension.h")
 
 # set_target_properties(CryptoExtension PROPERTIES VERSION ${PROJECT_VERSION})
@@ -28,4 +30,8 @@ install(TARGETS CryptoExtension
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
+
+# target_link_libraries(CryptoExtension cryptopp-static)
+
 # TODO: Add tests and install targets if needed.
+# target_link_libraries(CryptoExtension "${CMAKE_CURRENT_LIST_DIR}/../libs/cryptopp.lib")
