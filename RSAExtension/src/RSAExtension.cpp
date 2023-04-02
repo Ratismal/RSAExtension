@@ -1,14 +1,22 @@
 ﻿// CryptoExtension.cpp : Defines the entry point for the application.
 //
 
-#include "../api/CryptoExtension.h"
+#include "../api/RSAExtension.h"
 
 #include <iostream>
+
+#include <rsa.h>
+#include <integer.h>
+#include <osrng.h>
 
 using namespace CryptoPP;
 using namespace std;
 
-namespace CryptoExtension {
+namespace RSAExtension {
+    GMDLL char* DLLTest() {
+        return (char*)"testing.";
+    }
+
     // Generate the key components and outputs a set of macros to console that can be used within GMS2
     GMDLL char* DLLGenerateKeys() {
         ///////////////////////////////////////
@@ -108,7 +116,7 @@ namespace CryptoExtension {
             for (int j = 0; j < 4; j++) {
                 bytes.push_back(b[j]);
 
-                // cout << "Added byte " << byteCount << " " <<  charToHex(b[j]) << " " << b[j] << endl;
+                cout << "Added byte " << byteCount << " " <<  charToHex(b[j]) << " " << b[j] << endl;
 
                 if (++byteCount >= length) {
                     // We've reached the last byte before the padding, so we're done.
@@ -121,7 +129,7 @@ namespace CryptoExtension {
     }
 
     GMDLL char* DLLRSASignBuffer(const int* buffer, double length, char* priv) {
-        vector<char*> tokens = tokenify(priv, "|");
+        vector<char*> tokens = tokenify(priv, (char*)"|");
 
         AutoSeededRandomPool rng;
 
@@ -152,7 +160,7 @@ namespace CryptoExtension {
     }
 
     GMDLL double DLLRSAVerifyBuffer(const int* buffer, double length, char* pub) {
-        vector<char*> tokens = tokenify(pub, "|");
+        vector<char*> tokens = tokenify(pub, (char*)"|");
 
         AutoSeededRandomPool rng;
 

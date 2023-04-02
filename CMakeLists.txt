@@ -27,7 +27,7 @@ cpmaddpackage(
 # target_link_libraries(CryptoExtension, CryptoPP)
 
 # Include sub-projects.
-add_subdirectory ("CryptoExtension")
+add_subdirectory ("RSAExtension")
 
 target_link_libraries(RSAExtension PUBLIC cryptopp::cryptopp)
 target_compile_features(RSAExtension PRIVATE cxx_constexpr)

@@ -9,15 +9,15 @@
 #define GMDLL extern "C"
 #endif
 
-#include <rsa.h>
-#include <integer.h>
-#include <osrng.h>
+
 
 // TODO: Reference additional headers your program requires here.
 
-namespace CryptoExtension {
+namespace RSAExtension {
 
-    GMDLL double DLLAddNumbers(double a, double b);
-    GMDLL char* DLLPrintSomething();
+    GMDLL char* DLLTest();
+    GMDLL char* DLLGenerateKeys();
+    GMDLL char* DLLRSASignBuffer(const int* buffer, double length, char* priv);
+    GMDLL double DLLRSAVerifyBuffer(const int* buffer, double length, char* pub);
 
 }

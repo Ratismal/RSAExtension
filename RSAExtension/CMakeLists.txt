@@ -7,12 +7,12 @@ cmake_minimum_required (VERSION 3.8)
 include(GNUInstallDirs)
 
 # Add source to this project's library.
-add_library (RSAExtension SHARED "src/CryptoExtension.cpp" "api/CryptoExtension.h")
+add_library (RSAExtension SHARED "src/RSAExtension.cpp" "api/RSAExtension.h")
 
 set_target_properties(RSAExtension PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION 1
-    PUBLIC_HEADER api/CryptoExtension.h)
+    PUBLIC_HEADER api/RSAExtension.h)
 
 target_include_directories(RSAExtension PRIVATE .)
 
