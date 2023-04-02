@@ -116,8 +116,6 @@ namespace RSAExtension {
             for (int j = 0; j < 4; j++) {
                 bytes.push_back(b[j]);
 
-                cout << "Added byte " << byteCount << " " <<  charToHex(b[j]) << " " << b[j] << endl;
-
                 if (++byteCount >= length) {
                     // We've reached the last byte before the padding, so we're done.
                     break;
