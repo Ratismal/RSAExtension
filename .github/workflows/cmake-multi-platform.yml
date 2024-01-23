@@ -31,7 +31,8 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-            artifact: /RSAExtension/${{ matrix.build_type }}
+            build_type: Release
+            artifact: /RSAExtension/Release
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
