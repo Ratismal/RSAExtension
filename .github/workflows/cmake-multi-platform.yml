@@ -31,9 +31,11 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
+            artifact: /RSAExtension/${{ matrix.build_type }}
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+            artifact: ""
         exclude:
           - os: windows-latest
             c_compiler: gcc
@@ -85,4 +87,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: RSAExtension-${{ matrix.os }}-${{ matrix.platform }}
-        path: ${{ steps.strings.outputs.build-output-dir }}/RSAExtension/${{ matrix.build_type }}
+        path: ${{ steps.strings.outputs.build-output-dir }}${{ matrix.artifact }}
