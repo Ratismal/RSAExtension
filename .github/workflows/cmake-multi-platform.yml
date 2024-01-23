@@ -30,13 +30,22 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-          # - os: ubuntu-latest
-          #   c_compiler: gcc
-          #   cpp_compiler: g++
-          # - os: ubuntu-latest
-          #   c_compiler: clang
-          #   cpp_compiler: clang++
+            extra: x64
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+            platform: ARM64
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+            extra: Win32
         exclude:
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+          - os: ubuntu-latest
+            c_compiler: clang
+            cpp_compiler: clang++
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
@@ -62,6 +71,7 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_GENERATOR_PLATFORM=${{ matrix.platform }}
         -S ${{ github.workspace }}
 
     - name: Build
@@ -78,4 +88,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: RSAExtension-${{ matrix.os }}
-        path: ${{ steps.strings.outputs.build-output-dir }}
+        path: ${{ steps.strings.outputs.build-output-dir }}/RSAExtension/${{ matrix.build_type }}
