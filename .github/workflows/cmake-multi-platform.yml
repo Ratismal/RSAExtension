@@ -25,33 +25,24 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         build_type: [Release]
-        c_compiler: [gcc, clang, cl]
+        c_compiler: [gcc, cl]
+        platform: [x64, ARM64, cl]
         include:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-            extra: x64
-          - os: windows-latest
-            c_compiler: cl
-            cpp_compiler: cl
-            platform: ARM64
-          - os: windows-latest
-            c_compiler: cl
-            cpp_compiler: cl
-            extra: Win32
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
         exclude:
-          - os: ubuntu-latest
-            c_compiler: gcc
-            # cpp_compiler: g++
-          - os: ubuntu-latest
-            c_compiler: clang
-            # cpp_compiler: clang++
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
             c_compiler: clang
           - os: ubuntu-latest
-            c_compiler: cl
+            platform: ARM64
+          - os: ubuntu-latest
+            platform: Win32
 
     steps:
     - uses: actions/checkout@v3
@@ -87,5 +78,5 @@ jobs:
     - name: Store artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: RSAExtension-${{ matrix.os }}
+        name: RSAExtension-${{ matrix.os }}-${{ matrix.platform }}
         path: ${{ steps.strings.outputs.build-output-dir }}/RSAExtension/${{ matrix.build_type }}
